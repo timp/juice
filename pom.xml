@@ -81,8 +81,6 @@
               <goal>test</goal>
             </goals>
             <configuration>
-              <testSourceDirectory>src/test/java</testSourceDirectory>
-              <testClassesDirectory>${project.build.directory}/test-classes</testClassesDirectory>
               <argLine>${surefireArgLine}</argLine>
               <includes>
                 <include>**/*Test.java</include>
@@ -108,12 +106,13 @@
               <goal>verify</goal>
             </goals>
             <configuration>
-              <testSourceDirectory>src/it/java</testSourceDirectory>
-              <testClassesDirectory>${project.build.directory}/it-classes</testClassesDirectory>
               <argLine>${failsafeArgLine}</argLine>
               <includes>
                 <include>**/*IT.java</include>
               </includes>
+              <excludes>
+                <exclude>**/*Test.java</exclude>
+              </excludes>
             </configuration>
           </execution>
         </executions>
