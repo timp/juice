@@ -46,7 +46,7 @@ public class LoginIT {
   }
 
   @Test
-  public void loginTest() {
+  public void loginSuccessTest() {
     WebElement loginText = driver.findElement(By.id("username"));
     loginText.sendKeys("Tim");
     WebElement passwordText = driver.findElement(By.id("password"));
@@ -59,4 +59,17 @@ public class LoginIT {
 
   }
 
+  @Test
+  public void loginFailTest() {
+    WebElement loginText = driver.findElement(By.id("username"));
+    loginText.sendKeys("Tim");
+    WebElement passwordText = driver.findElement(By.id("password"));
+    passwordText.sendKeys("bad");
+    driver.findElement(By.id("submitLogin")).click();
+    WebDriverWait wait = new WebDriverWait(driver, 3);
+    wait.until(ExpectedConditions
+        .textMatches(
+            By.ByXPath.xpath("//body"), Pattern.compile("Try again")));
+
+  }
 }
