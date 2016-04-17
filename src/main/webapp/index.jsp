@@ -1,0 +1,10 @@
+<html>
+<body>
+<h2>Login to Enter</h2>
+<form action="login" method="POST">
+<input name="username" id=username type="text" />
+<input name="password" id=password type="password" />
+<input type=submit id="submitLogin"/>
+</form>
+</body>
+</html>
