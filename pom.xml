@@ -11,8 +11,6 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <skip.integration.tests>true</skip.integration.tests>
-    <skip.unit.tests>false</skip.unit.tests>
     <jetty.version>6.1.25</jetty.version>
     <slf4j.version>1.5.8</slf4j.version>
     <log4j.version>1.2.14</log4j.version>
@@ -74,52 +72,6 @@
           <target>1.7</target>
         </configuration>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.16</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>test</goal>
-            </goals>
-            <configuration>
-              <argLine>${surefireArgLine}</argLine>
-              <includes>
-                <include>**/*Test.java</include>
-              </includes>
-              <excludes>
-                <exclude>**/*IT.java</exclude>
-              </excludes>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-failsafe-plugin</artifactId>
-        <version>2.16</version>
-        <executions>
-          <execution>
-            <id>it</id>
-            <phase>integration-test</phase>
-            <goals>
-              <goal>integration-test</goal>
-              <goal>verify</goal>
-            </goals>
-            <configuration>
-              <argLine>${failsafeArgLine}</argLine>
-              <includes>
-                <include>**/*IT.java</include>
-              </includes>
-              <excludes>
-                <exclude>**/*Test.java</exclude>
-              </excludes>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
 
       <plugin>
         <groupId>org.jacoco</groupId>
@@ -172,6 +124,54 @@
           </execution>
         </executions>
       </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.16</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>test</goal>
+            </goals>
+            <configuration>
+              <argLine>${surefireArgLine}</argLine>
+              <includes>
+                <include>**/*Test.java</include>
+              </includes>
+              <excludes>
+                <exclude>**/*IT.java</exclude>
+              </excludes>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
+        <version>2.16</version>
+        <executions>
+          <execution>
+            <id>it</id>
+            <phase>integration-test</phase>
+            <goals>
+              <goal>integration-test</goal>
+              <goal>verify</goal>
+            </goals>
+            <configuration>
+              <argLine>${failsafeArgLine}</argLine>
+              <includes>
+                <include>**/*IT.java</include>
+              </includes>
+              <excludes>
+                <exclude>**/*Test.java</exclude>
+              </excludes>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
