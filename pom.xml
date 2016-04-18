@@ -6,7 +6,7 @@
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>JUICE Maven Webapp</name>
-  <description>JaCoCo UnitTest and IntegrationTest Configuration Example</description>
+  <description>JaCoCo UnitTest and IntegrationTest Configuration Example.</description>
   <url>http://github.com/timp/juice/</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -18,6 +18,11 @@
     <log4j.version>1.2.14</log4j.version>
     <jetty.port>8080</jetty.port>
   </properties>
+  <scm>
+    <connection>scm:https://github.com/timp/juice.git</connection>
+    <developerConnection>scm:git@github.com:timp/juice.git</developerConnection>
+    <url>https://github.com/timp/juice</url>
+  </scm>
   <dependencies>
     <dependency>
       <groupId>javax.servlet</groupId>
@@ -75,8 +80,6 @@
         <version>2.16</version>
         <executions>
           <execution>
-            <id>ut</id>
-            <phase>test</phase>
             <goals>
               <goal>test</goal>
             </goals>
@@ -129,7 +132,7 @@
               <goal>prepare-agent</goal>
             </goals>
             <configuration>
-              <destFile>${project.build.directory}/jacoco-unit.exec</destFile>
+              <destFile>${project.build.directory}/jacoco.exec</destFile>
               <propertyName>surefireArgLine</propertyName>
             </configuration>
           </execution>
@@ -140,7 +143,7 @@
               <goal>report</goal>
             </goals>
             <configuration>
-              <dataFile>${project.build.directory}/jacoco-unit.exec</dataFile>
+              <dataFile>${project.build.directory}/jacoco.exec</dataFile>
               <outputDirectory>${project.reporting.outputDirectory}/jacoco-unit</outputDirectory>
             </configuration>
           </execution>
@@ -173,14 +176,6 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
         <version>2.6</version>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-site-plugin</artifactId>
-        <version>3.5.1</version>
-        <configuration>
-          <attach>true</attach>
-        </configuration>
       </plugin>
       <plugin>
         <groupId>org.eclipse.jetty</groupId>
@@ -219,10 +214,36 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <version>3.5.1</version>
+        <configuration>
+          <attach>true</attach>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>com.github.github</groupId>
+        <artifactId>site-maven-plugin</artifactId>
+        <version>0.12</version>
+        <configuration>
+          <message>Building site for ${project.version}</message>
+          <server>github</server>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>site</goal>
+            </goals>
+            <phase>site</phase>
+          </execution>
+        </executions>
+      </plugin>
+
     </plugins>
   </build>
   <reporting>
-    <excludeDefaults>false</excludeDefaults>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -243,23 +264,28 @@
           </reportSet>
         </reportSets>
       </plugin>
-
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
         <version>0.7.6.201602180812</version>
-        <configuration>
-          <dataFile>${project.build.directory}/jacoco-it.exec</dataFile>
-          <outputDirectory>${project.reporting.outputDirectory}/jacoco-it</outputDirectory>
-        </configuration>
       </plugin>
-
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-project-info-reports-plugin</artifactId>
-        <version>2.7</version>
+        <version>2.9</version>
+        <configuration>
+          <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+        </configuration>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>index</report>
+              <report>dependencies</report>
+              <report>scm</report>
+            </reports>
+          </reportSet>
+        </reportSets>
       </plugin>
-
     </plugins>
   </reporting>
 </project>
