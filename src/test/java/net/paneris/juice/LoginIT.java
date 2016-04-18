@@ -28,8 +28,6 @@ public class LoginIT {
   public void setup() {
     driver = new FirefoxDriver();
     selenium = new WebDriverBackedSelenium(driver, getBaseUrl());
-    selenium.open("/");
-    driver.manage().window().maximize();
   }
 
   public String getBaseUrl() {
@@ -46,30 +44,24 @@ public class LoginIT {
   }
 
   @Test
-  public void loginSuccessTest() {
-    WebElement loginText = driver.findElement(By.id("username"));
-    loginText.sendKeys("Tim");
-    WebElement passwordText = driver.findElement(By.id("password"));
-    passwordText.sendKeys("password");
-    driver.findElement(By.id("submitLogin")).click();
-    WebDriverWait wait = new WebDriverWait(driver, 3);
-    wait.until(ExpectedConditions
-        .textMatches(
-            By.ByXPath.xpath("//body"), Pattern.compile("Welcome")));
-
+  public void loginTest() {
+    submit("Tim", "password", "Welcome");
+    submit("Tim", "bad", "Try again");
+    submit("unknown", "password", "Try again");
+    submit("unknown", "bad", "Try again");
   }
-
-  @Test
-  public void loginFailTest() {
+  private void submit(String username, String password, String result) {
+    selenium.open("/");
+    driver.manage().window().maximize();
     WebElement loginText = driver.findElement(By.id("username"));
-    loginText.sendKeys("Tim");
+    loginText.sendKeys(username);
     WebElement passwordText = driver.findElement(By.id("password"));
-    passwordText.sendKeys("bad");
+    passwordText.sendKeys(password);
     driver.findElement(By.id("submitLogin")).click();
     WebDriverWait wait = new WebDriverWait(driver, 3);
     wait.until(ExpectedConditions
-        .textMatches(
-            By.ByXPath.xpath("//body"), Pattern.compile("Try again")));
+            .textMatches(
+                    By.ByXPath.xpath("//body"), Pattern.compile(result)));
 
   }
 }

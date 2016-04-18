@@ -13,27 +13,15 @@ import java.io.PrintWriter;
  */
 public class Login extends HttpServlet {
 
-  public void doGet(HttpServletRequest request,
-                    HttpServletResponse response)
-      throws ServletException, IOException {
-    doGetPostRequest(request, response);
-  }
-
   public void doPost(HttpServletRequest request,
                      HttpServletResponse response)
       throws ServletException, IOException {
-    doGetPostRequest(request, response);
-  }
-
-  private void doGetPostRequest(final HttpServletRequest request,
-                                final HttpServletResponse response)
-      throws ServletException, IOException {
     response.setContentType("text/html");
     PrintWriter out = response.getWriter();
-      out.println(header(response(
-          Authoriser.ok(
-              request.getParameter("username"),
-              request.getParameter("password")))));
+    out.println(header(response(
+            new Authoriser().ok(
+                    request.getParameter("username"),
+                    request.getParameter("password")))));
   }
 
   public static String header(String heading) {

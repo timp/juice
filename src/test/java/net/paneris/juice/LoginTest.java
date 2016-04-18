@@ -19,7 +19,9 @@ public class LoginTest {
   @Test
   public void testFailurePath() {
     assertEquals("<a href=\"/\">Try again</a>",
-        Login.response(Authoriser.ok("Tim", "bad password")));
+            Login.response(Authoriser.ok("Tim", "bad password")));
+    assertEquals("<a href=\"/\">Try again</a>",
+            Login.response(Authoriser.ok("unknown", "password")));
   }
 
   @Test
