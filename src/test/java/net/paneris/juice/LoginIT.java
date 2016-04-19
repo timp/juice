@@ -28,7 +28,10 @@ public class LoginIT {
   }
 
   public static String getBaseUrl() {
-    String setUrl = System.getenv("JUICE_URL");
+    String setUrl = System.getProperty("JUICE_URL");
+    if (setUrl == null) {
+      setUrl = System.getenv("JUICE_URL");
+    }
     if (setUrl != null) {
       baseUrl = setUrl;
     }
