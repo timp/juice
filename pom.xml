@@ -8,6 +8,33 @@
   <name>JUICE Maven Webapp</name>
   <description>JaCoCo UnitTest and IntegrationTest Configuration Example.</description>
   <url>http://github.com/timp/juice/</url>
+  <organization>
+    <name>TimP</name>
+    <url>http://timp.github.io/</url>
+  </organization>
+  <licenses>
+    <license>
+      <name>free</name>
+      <comments>This is given in the hope it helps.</comments>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>timp</id>
+      <name>Tim Pizey</name>
+      <email>timp@paneris.org</email>
+      <url>http://tim.pizey.uk</url>
+      <organization>TimP</organization>
+      <organizationUrl>http://timp.github.io</organizationUrl>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>GMT</timezone>
+      <properties>
+        <picUrl>http://tim.pizey.uk/timp.png</picUrl>
+      </properties>
+    </developer>
+  </developers>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -34,7 +61,6 @@
       <version>2.53.0</version>
       <scope>test</scope>
     </dependency>
-
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
