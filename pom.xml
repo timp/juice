@@ -274,8 +274,31 @@
           <attach>true</attach>
         </configuration>
       </plugin>
-
-
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <executions>
+          <execution>
+            <!-- Copy the readme file to the site source files so that a page is generated from it. -->
+            <id>copy-readme</id>
+            <phase>pre-site</phase>
+            <goals>
+                <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}/src/site/markdown</outputDirectory>
+              <resources>
+                <resource>
+                    <directory>${basedir}</directory>
+                    <includes>
+                      <include>*.md</include>
+                    </includes>
+                  </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
   <reporting>
