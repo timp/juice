@@ -10,7 +10,7 @@ This is offered in the hope it saves you, or future me, some time.
 mvn clean install site [-Dpublish]
 ```
 
-!Note
+#### Note
 The site is automatically deployed to http://timp.github.io/juice/
 if the property publish is defined.
 
