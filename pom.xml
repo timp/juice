@@ -139,6 +139,16 @@
             </configuration>
           </execution>
           <execution>
+            <id>aggregate</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>report-aggregate</goal>
+            </goals>
+            <configuration>
+              <skip>true</skip>
+            </configuration>
+          </execution>
+          <execution>
             <id>post-it-test</id>
             <phase>verify</phase>
             <goals>
@@ -283,19 +293,39 @@
             <id>copy-readme</id>
             <phase>pre-site</phase>
             <goals>
-                <goal>copy-resources</goal>
+              <goal>copy-resources</goal>
             </goals>
             <configuration>
               <outputDirectory>${basedir}/src/site/markdown</outputDirectory>
               <resources>
                 <resource>
-                    <directory>${basedir}</directory>
-                    <includes>
-                      <include>*.md</include>
-                    </includes>
-                  </resource>
+                  <directory>${basedir}</directory>
+                  <includes>
+                    <include>README.md</include>
+                  </includes>
+                </resource>
               </resources>
             </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.1.1</version>
+        <configuration>
+          <executable>cp</executable>
+          <arguments>
+            <argument>${basedir}/src/site/markdown/README.md</argument>
+            <argument>${basedir}/src/site/markdown/index.md</argument>
+          </arguments>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>pre-site</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
           </execution>
         </executions>
       </plugin>
@@ -337,10 +367,7 @@
         <reportSets>
           <reportSet>
             <reports>
-              <report>index</report>
-	      <!--
-		  <report>dependencies</report>
-		  -->
+              <report>dependencies</report>
               <report>scm</report>
             </reports>
           </reportSet>
@@ -352,13 +379,13 @@
     <profile>
       <id>github</id>
       <activation>
-	<property>
+        <property>
           <name>publish</name>
         </property>
       </activation>
       <build>
-	<plugins>
-	  <plugin>
+        <plugins>
+          <plugin>
             <groupId>com.github.github</groupId>
             <artifactId>site-maven-plugin</artifactId>
             <version>0.12</version>
@@ -375,7 +402,7 @@
               </execution>
             </executions>
           </plugin>
-	</plugins>
+        </plugins>
       </build>
     </profile>
   </profiles>

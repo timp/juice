@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="Maven">
+  <skin>
+    <groupId>org.apache.maven.skins</groupId>
+    <artifactId>maven-fluido-skin</artifactId>
+    <version>1.5</version>
+  </skin>
+  <bannerRight>
+    <name>Juice on GitHub</name>
+    <src>http://tim.pizey.uk//green_3101_Fuzzypeg_bigger.jpg</src>
+    <href>http://twitter.com/TimPizey</href>
+  </bannerRight>
+  <body>
+    <menu>
+      <item name="README" href="README.html"/>
+    </menu>
+    <menu ref="reports"/>
+  </body>
+</project>
