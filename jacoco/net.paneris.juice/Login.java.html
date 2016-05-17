@@ -19,9 +19,9 @@ import java.io.PrintWriter;
 <span class="nc" id="L19">    response.setContentType(&quot;text/html&quot;);</span>
 <span class="nc" id="L20">    PrintWriter out = response.getWriter();</span>
 <span class="nc" id="L21">    out.println(header(response(</span>
-            new Authoriser().ok(
-                    request.getParameter(&quot;username&quot;),
-                    request.getParameter(&quot;password&quot;)))));
+<span class="nc" id="L22">            new Authoriser().ok(</span>
+<span class="nc" id="L23">                    request.getParameter(&quot;username&quot;),</span>
+<span class="nc" id="L24">                    request.getParameter(&quot;password&quot;)))));</span>
 <span class="nc" id="L25">  }</span>
 
   public static String header(String heading) {
@@ -41,4 +41,4 @@ import java.io.PrintWriter;
   }
 
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201605151132</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201605170451</span></div></body></html>
