@@ -139,16 +139,6 @@
             </configuration>
           </execution>
           <execution>
-            <id>aggregate</id>
-            <phase>verify</phase>
-            <goals>
-              <goal>report-aggregate</goal>
-            </goals>
-            <configuration>
-              <skip>true</skip>
-            </configuration>
-          </execution>
-          <execution>
             <id>post-it-test</id>
             <phase>verify</phase>
             <goals>
