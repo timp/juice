@@ -43,12 +43,14 @@
     <slf4j.version>1.5.8</slf4j.version>
     <log4j.version>1.2.14</log4j.version>
     <jetty.port>8080</jetty.port>
+    <skipITs>false</skipITs>
   </properties>
   <scm>
     <connection>scm:https://github.com/timp/juice.git</connection>
     <developerConnection>scm:git@github.com:timp/juice.git</developerConnection>
     <url>https://github.com/timp/juice</url>
   </scm>
+
   <repositories>
     <repository>
       <id>snapshots-repo</id>
@@ -57,6 +59,7 @@
       <snapshots><enabled>true</enabled></snapshots>
     </repository>
   </repositories>
+
   <dependencies>
     <dependency>
       <groupId>javax.servlet</groupId>
@@ -123,19 +126,6 @@
               <propertyName>surefireArgLine</propertyName>
             </configuration>
           </execution>
-<!--
-          <execution>
-            <id>post-unit-test</id>
-            <phase>prepare-package</phase>
-            <goals>
-              <goal>report</goal>
-            </goals>
-            <configuration>
-              <dataFile>${project.build.directory}/jacoco.exec</dataFile>
-              <outputDirectory>${project.reporting.outputDirectory}/jacoco-unit</outputDirectory>
-            </configuration>
-          </execution>
--->
           <execution>
             <id>pre-it-test</id>
             <phase>pre-integration-test</phase>
@@ -145,65 +135,9 @@
             <configuration>
               <destFile>${project.build.directory}/jacoco-it.exec</destFile>
               <propertyName>failsafeArgLine</propertyName>
+              <skip>${skipITs}</skip>
             </configuration>
           </execution>
-          <execution>
-            <id>merge-ut-it</id>
-            <phase>post-integration-test</phase>
-            <goals>
-              <goal>merge</goal>
-            </goals>
-            <configuration>
-              <fileSets>
-                <fileSet>
-                  <directory>${project.build.directory}</directory>
-                  <includes>
-                    <include>jacoco.exec</include>
-                    <include>jacoco-it.exec</include>
-                  </includes>
-                </fileSet>
-              </fileSets>
-              <destFile>${project.build.directory}/jacoco-both.exec</destFile>
-            </configuration>
-          </execution>
-<!--
-          <execution>
-            <id>report-tests-2-it</id>
-            <phase>verify</phase>
-            <goals>
-              <goal>report</goal>
-            </goals>
-            <configuration>
-              <dataFile>${project.build.directory}/jacoco-it.exec</dataFile>
-              <outputDirectory>${project.reporting.outputDirectory}/jacoco-it</outputDirectory>
-            </configuration>
-          </execution>
-          <execution>
-            <id>report-tests-3-both</id>
-            <phase>verify</phase>
-            <goals>
-              <goal>report</goal>
-            </goals>
-            <configuration>
-              <title>jacoco</title>
-              <dataFile>${project.build.directory}/jacoco-both.exec</dataFile>
-              <outputDirectory>${project.reporting.outputDirectory}/jacoco-both</outputDirectory>
-            </configuration>
-          </execution>
-          <execution>
-            <id>override-aggregate</id>
-            <phase>verify</phase>
-            <goals><goal>report-aggregate</goal></goals>
-            <configuration>
-              <includes>${project.build.directory}/*.exec</includes>
-              <dataFileIncludes>
-                <dataFileInclude>${project.build.directory}/jacoco.exec</dataFileInclude>
-                <dataFileInclude>${project.build.directory}/jacoco-it.exec</dataFileInclude>
-              </dataFileIncludes>
-            </configuration>
-          </execution>
--->
-
         </executions>
       </plugin>
 
@@ -268,6 +202,7 @@
               <excludes>
                 <exclude>**/*Test.java</exclude>
               </excludes>
+              <skip>${skipITs}</skip>
             </configuration>
           </execution>
           <execution>
@@ -275,6 +210,9 @@
             <goals>
               <goal>verify</goal>
             </goals>
+            <configuration>
+              <skip>${skipITs}</skip>
+            </configuration>
           </execution>
         </executions>
       </plugin>
@@ -311,6 +249,7 @@
               <waitForChild>false</waitForChild>
               <maxStartupLines>200</maxStartupLines>
               <jvmArgs>${failsafeArgLine} -Djetty.port=${jetty.port}</jvmArgs>
+              <skip>${skipITs}</skip>
             </configuration>
           </execution>
           <execution>
@@ -405,10 +344,11 @@
         <version>0.7.7-SNAPSHOT</version>
         <reportSets>
           <reportSet>
-<reports>
-  <report>report</report>
-  <report>report-integration</report>
-</reports>
+            <reports>
+              <report>report</report>
+              <report>report-integration</report>
+              <report>report-aggregate</report>
+            </reports>
           </reportSet>
         </reportSets>
       </plugin>
@@ -447,7 +387,6 @@
             <configuration>
               <message>Building site for ${project.version}</message>
               <server>github</server>
-              <merge>true</merge>
             </configuration>
             <executions>
               <execution>
