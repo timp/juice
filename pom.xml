@@ -231,6 +231,7 @@
         <executions>
           <execution>
             <id>pre-unit-test</id>
+            <phase>initialize</phase>
             <goals>
               <goal>prepare-agent</goal>
             </goals>
@@ -242,7 +243,7 @@
           <execution>
             <id>pre-it-test</id>
             <!-- hack ordering -->
-            <phase>package</phase>
+            <phase>initialize</phase>
             <goals>
               <goal>prepare-agent</goal>
             </goals>
@@ -261,7 +262,7 @@
                 <fileSet>
                   <directory>${project.build.directory}</directory>
                   <includes>
-                    <include>jacoco-ut.exec</include>
+                    <include>jacoco.exec</include>
                     <include>jacoco-it.exec</include>
                   </includes>
                 </fileSet>
@@ -374,7 +375,6 @@
             <reports>
               <report>report</report>
               <report>report-integration</report>
-              <report>report-aggregate</report>
             </reports>
           </reportSet>
         </reportSets>

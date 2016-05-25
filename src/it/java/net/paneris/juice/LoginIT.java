@@ -47,8 +47,8 @@ public class LoginIT {
   @Test
   public void loginTest() {
     submit("Tim", "password", "Welcome");
-    submit("Tim", "bad", "Try again");
     //Leave a gap in coverage to demonstrate aggregation
+    //submit("Tim", "bad", "Try again");
     //submit("unknown", "password", "Try again");
     //submit("unknown", "bad", "Try again");
   }
