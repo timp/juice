@@ -170,6 +170,7 @@
               <excludes>
                 <exclude>**/*Test.java</exclude>
               </excludes>
+              <forkCount>0</forkCount>
               <skip>${skipITs}</skip>
             </configuration>
           </execution>
@@ -370,6 +371,7 @@
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
         <version>0.7.7-SNAPSHOT</version>
+        <!--
         <reportSets>
           <reportSet>
             <reports>
@@ -378,6 +380,7 @@
             </reports>
           </reportSet>
         </reportSets>
+        -->
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
