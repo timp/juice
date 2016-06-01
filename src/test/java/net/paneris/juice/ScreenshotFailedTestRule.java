@@ -39,8 +39,8 @@ public class ScreenshotFailedTestRule implements MethodRule {
 
       public void captureScreenshot(String fileName) {
         try {
-          new File("target/surefire-reports/").mkdirs();
-          FileOutputStream out = new FileOutputStream("target/surefire-reports/screenshot-"
+          new File("target/screenshots/").mkdirs();
+          FileOutputStream out = new FileOutputStream("target/screenshots/screenshot-"
               + fileName + ".png");
           out.write(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES));
           out.close();
