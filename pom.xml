@@ -39,6 +39,10 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <!--
+        <jacoco.version>0.7.6.201602180812</jacoco.version>
+    -->
+    <jacoco.version>0.7.7-SNAPSHOT</jacoco.version>
 <!--
 Bad:
     <jetty.version>9.3.9.v20160517</jetty.version>
@@ -51,14 +55,8 @@ Good:
     <jetty.version>9.3.0.v20150612</jetty.version>
 -->
     <jetty.version>9.3.6.v20151106</jetty.version>
-    <slf4j.version>1.5.8</slf4j.version>
-    <log4j.version>1.2.14</log4j.version>
     <jetty.port>8080</jetty.port>
     <skipITs>false</skipITs>
-    <jacoco.version>0.7.7-SNAPSHOT</jacoco.version>
-<!--
-    <jacoco.version>0.7.6.201602180812</jacoco.version>
--->
   </properties>
   <scm>
     <connection>scm:https://github.com/timp/juice.git</connection>
