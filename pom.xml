@@ -173,7 +173,7 @@ Good:
           </execution>
           <execution>
             <id>verify</id>
-            <phase>integration-test</phase>
+            <phase>post-integration-test</phase>
             <goals>
               <goal>verify</goal>
             </goals>
