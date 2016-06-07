@@ -42,7 +42,7 @@
     <!--
         <jacoco.version>0.7.6.201602180812</jacoco.version>
     -->
-    <jacoco.version>0.7.7-SNAPSHOT</jacoco.version>
+    <jacoco.version>0.7.7.201606060606<</jacoco.version>
 <!--
 Bad:
     <jetty.version>9.3.9.v20160517</jetty.version>
@@ -382,7 +382,7 @@ Good:
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
         <version>${jacoco.version}</version>
-        <!--
+
         <reportSets>
           <reportSet>
             <reports>
@@ -391,7 +391,6 @@ Good:
             </reports>
           </reportSet>
         </reportSets>
-        -->
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
