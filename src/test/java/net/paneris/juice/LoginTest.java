@@ -10,18 +10,19 @@ import static org.junit.Assert.assertEquals;
  * @since 2016-04-16
  */
 public class LoginTest {
+  Authoriser authoriser = new Authoriser();
   @Test
   public void testSuccessResponse() {
     assertEquals("Welcome",
-        Login.response(Authoriser.ok("Tim", "password")));
+        Login.response(authoriser.ok("Tim", "password")));
   }
 
   @Test
   public void testFailurePath() {
     assertEquals("<a href=\"/\">Try again</a>",
-            Login.response(Authoriser.ok("Tim", "bad password")));
+            Login.response(authoriser.ok("Tim", "bad password")));
     assertEquals("<a href=\"/\">Try again</a>",
-            Login.response(Authoriser.ok("unknown", "password")));
+            Login.response(authoriser.ok("unknown", "password")));
   }
 
   @Test
