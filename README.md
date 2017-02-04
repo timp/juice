@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/Melati/Melati.svg?branch=master)](https://travis-ci.org/Melati/Melati)
 # JUICE - JaCoCo UnitTest and IntegrationTest Configuration Example
 ## Motivation 
 Configuring Maven, Surefire, Failsafe and JaCoCo requires the skills of 
