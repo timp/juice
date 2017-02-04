@@ -5,13 +5,13 @@
  * @since 2016-04-16
  */
 <span class="fc" id="L7">public final class Authoriser {</span>
-  public static boolean ok(String username, String password) {
-<span class="pc bpc" id="L9" title="1 of 2 branches missed.">    if (username.equalsIgnoreCase((&quot;Tim&quot;))) {</span>
-<span class="pc bpc" id="L10" title="1 of 2 branches missed.">      if (password.equalsIgnoreCase(&quot;Password&quot;)) {</span>
-<span class="fc" id="L11">        return true;</span>
-      }
+
+  public boolean ok(String username, String password) {
+<span class="pc bpc" id="L10" title="1 of 2 branches missed.">    if (&quot;Tim&quot;.equalsIgnoreCase(username)</span>
+<span class="pc bpc" id="L11" title="1 of 2 branches missed.">        &amp;&amp; &quot;Password&quot;.equalsIgnoreCase(password)) {</span>
+<span class="fc" id="L12">      return true;</span>
     }
 <span class="nc" id="L14">    return false;</span>
   }
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.8.201612092310</span></div></body></html>
