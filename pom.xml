@@ -43,19 +43,7 @@
         <jacoco.version>0.7.6.201602180812</jacoco.version>
     -->
     <jacoco.version>0.7.8</jacoco.version>
-<!--
-Bad:
     <jetty.version>9.4.0.v20161208</jetty.version>
-    <jetty.version>9.3.9.v20160517</jetty.version>
-    <jetty.version>9.3.8.v20160314</jetty.version>
-    <jetty.version>9.3.7.v20160115</jetty.version>
-Good:
-    <jetty.version>9.3.6.v20151106</jetty.version>
-    <jetty.version>9.3.3.v20150827</jetty.version>
-    <jetty.version>9.3.1.v20150714</jetty.version>
-    <jetty.version>9.3.0.v20150612</jetty.version>
--->
-    <jetty.version>9.3.6.v20151106</jetty.version>
     <jetty.port>8080</jetty.port>
     <skipITs>false</skipITs>
   </properties>
@@ -84,7 +72,7 @@ Good:
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-java</artifactId>
-      <version>2.53.0</version>
+      <version>3.0.1</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -224,7 +212,7 @@ Good:
         <artifactId>maven-antrun-plugin</artifactId>
         <configuration>
           <tasks>
-            <sleep seconds="15" />
+            <sleep seconds="3" />
           </tasks>
         </configuration>
         <executions>
