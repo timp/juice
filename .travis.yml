@@ -26,7 +26,7 @@ before_install:
 
 before_script:
   - "export DISPLAY=:99.0"
-  - sudo export XVFBARGS="+extension RANDR +extension RENDER +extension GLX" & sh -e /etc/init.d/xvfb start
+  - sudo export xvfb.args="+extension RANDR +extension RENDER +extension GLX" & sh -e /etc/init.d/xvfb start
   - sleep 3 # give xvfb some time to start
 
 script:
