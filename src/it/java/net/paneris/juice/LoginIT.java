@@ -25,8 +25,8 @@ public class LoginIT {
 
   @BeforeClass
   public static void setup() {
-    driver = new FirefoxDriver();
-    //driver = new ChromeDriver();
+    //driver = new FirefoxDriver();
+    driver = new ChromeDriver();
   }
 
 
