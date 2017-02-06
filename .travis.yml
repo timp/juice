@@ -1,12 +1,12 @@
 sudo: required
 dist: trusty
 
-#addons:
-#  apt:
-#    sources:
-#      - google-chrome
-#    packages:
-#      - google-chrome-stable
+addons:
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
 
 language: java
 jdk: oraclejdk8
@@ -27,5 +27,4 @@ before_script:
 
 script:
   - mvn install
-
 
