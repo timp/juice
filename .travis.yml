@@ -30,5 +30,5 @@ before_script:
   - sleep 3 # give xvfb some time to start
 
 script:
-  - mvn install
+  - mvn install -Dwebdriver.gecko.driver=./geckodriver/geckodriver -Dwebdriver.chrome.driver=./chromedriver
 
