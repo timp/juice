@@ -18,9 +18,8 @@ before_install:
   - mkdir geckodriver
   - tar -xzf geckodriver-v0.11.1-linux64.tar.gz -C geckodriver
   - export PATH=$PATH:$PWD/geckodriver
-
-before_script:
-  - Xvfb +extension RANDR
+  - export XVFBARGS=":99 -screen 0 1280x1024x24 +extension RANDR +extension RENDER +extension GLX"
+  - sudo sh -e /etc/init.d/xvfb restart
   - sleep 3
 
 script:
