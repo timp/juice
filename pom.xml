@@ -42,7 +42,7 @@
     <!--
         <jacoco.version>0.7.6.201602180812</jacoco.version>
     -->
-    <jacoco.version>0.7.8</jacoco.version>
+    <jacoco.version>0.7.9</jacoco.version>
     <jetty.version>9.4.0.v20161208</jetty.version>
     <jetty.port>8080</jetty.port>
     <skipITs>false</skipITs>
@@ -72,7 +72,7 @@
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-java</artifactId>
-      <version>3.0.1</version>
+      <version>2.53.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
